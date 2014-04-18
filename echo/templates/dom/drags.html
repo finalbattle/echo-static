@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}字符串{% endblock %}
+{% block main_content %}
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1 id="code">字符串格式化</h1>
+  </div>
+  <h2>语法</h2>
+  <p>一般用于较长的字符串进行格式化输出。</p>
+  <div class="bs-example">
+    <pre>"hello {0}".format("world")</pre>
+  </div>
+  <p>输出结果：<code>hello world</code></p>
+  
+  <div class="page-header">
+    <h1 id="code">解析url参数</h1>
+  </div>
+  <h2>语法</h2>
+  <div class="bs-example">
+    <pre>"name=Tom&age=20&birthday=1990-04-23".parseQueryString()</pre>
+  </div>
+  <p>输出结果：<code>{name:"Tom", age:"20", birthday:"1990-04-23"}</code></p>
+</div>
+{% endblock %}

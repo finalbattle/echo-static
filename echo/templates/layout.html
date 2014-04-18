@@ -11,178 +11,19 @@
 {% block layout_body %}
     <!-- Wrap all page content here -->
     <div id="wrap">
-
       <!-- Fixed navbar -->
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">小付通</a>
-          </div>
-          <!-- 导航栏 -->
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li nid="index" class="active"><a href="/"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-              <!--
-              <li nid="themes"><a href="/themes">主题</a></li>
-              <li nid="buttons"><a href="/buttons">按钮</a></li>
-              <li nid="inputs"><a href="/inputs">输入框</a></li>
-              <li nid="forms"><a href="/forms">表单</a></li>
-              <li nid="pages"><a href="/pages">分页</a></li>
-              <li nid="tables"><a href="/tables">表格</a></li>
-              <li nid="navs"><a href="/navs">导航</a></li>
-              <li nid="lists"><a href="/lists">列表</a></li>
-              <li nid="panels"><a href="/panels">面板</a></li>
-              <li nid="rows-cols"><a href="/rows-cols">定制</a></li>
-              <li nid="grids"><a href="/grids">删格</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">效果<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li nid="model_box"><a href="/model_box">模式窗口</a></li>
-                  <li nid="tooltips"><a href="/tooltips">工具提示</a></li>
-                  <li nid="alerts"><a href="/alerts">警告提示</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li nid="capsule"><a href="/capsule">胶囊</a></li>
-                  <li nid="collapse"><a href="/collapse">折叠</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-              -->
-            </ul>
-            <!--ul class="nav navbar-nav navbar-right">
-              <li nid="index" class="active"><a href="/"><span class="glyphicon glyphicon-user"></span> 用户</a></li>
-            </ul-->
-            <ul class="nav navbar-nav navbar-right">
-              <form class="navbar-form navbar-right" role="search">
-                <div class="btn-group dropdown-toggle">
-                {% set username = handler.session.get("username") or handler.session.get("phone") %}
-                  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> {{ username }}</button>
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="/basic/userinfo"><span class="glyphicon glyphicon-info-sign"></span> 用户信息</a></li>
-                    <li class="divider"></li>
-                    <li><a href="javascript:;" onclick="do_logout()"><span class="glyphicon glyphicon-off"></span> 注销</a></li>
-                  </ul>
-                </div>
-              </form>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+      {% include "navbar.html" %}
       </div>
-
-
-
-
       <!-- Begin page content -->
       <div id="container" class="container">
         <div class="row">
-          <div class="col-md-3" style="padding-right:9px">
+          <div class="col-md-3">
             <!-- 折叠窗口 - Begin -->
-            <div class="panel-group" id="accordion">
-              <!-- 基本信息 -->
-              <div class="panel panel-default">
-                <div class="panel-heading" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                  <h4 class="panel-title">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                    <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">基本信息</a>
-                  </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <ul class="nav nav-pills nav-stacked">
-                      <li nid="userinfo"><span><a href="/basic/userinfo">用户信息</a></span></li>
-                      <li nid="change-pass"><span><a href="/basic/change-pass">登录密码</a><span></li>
-                      <li nid="change-pay-pass"><span><a href="/basic/change-pay-pass">支付密码</a><span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- 收货地址 -->
-              <div class="panel panel-default">
-                <div class="panel-heading" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                  <h4 class="panel-title">
-                    <span class="glyphicon glyphicon-envelope"></span>
-                    <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">收货地址</a>
-                  </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <ul class="nav nav-pills nav-stacked">
-                    <li nid="address-info"><span><a href="/address/info">地址列表<span class="badge pull-right">{{ handler.initData.get("address", "loading...") }}</span></a></span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- 钱包信息 -->
-              <div class="panel panel-default">
-                <div class="panel-heading" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                  <h4 class="panel-title">
-                    <span class="glyphicon glyphicon-usd"></span>
-                    <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">钱包信息</a>
-                  </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <ul class="nav nav-pills nav-stacked">
-                      <li><span><a href="#">钱包余额</a></span></li>
-                      <li><span><a href="#">银行卡管理</a><span></li>
-                      <li><span><a href="#">限额充值</a><span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- 交易记录 -->
-              <div class="panel panel-default">
-                <div class="panel-heading" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                  <h4 class="panel-title">
-                    <span class="glyphicon glyphicon-edit"></span>
-                    <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">交易记录</a>
-                  </h4>
-                </div>
-                <div id="collapseFour" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <ul class="nav nav-pills nav-stacked">
-                    <li nid="record-deposit"><span><a href="/record/deposit">充值记录<span class="badge pull-right">{{ handler.initData.get("deposit", "loading...") }}</span></a></span></li>
-                    <li nid="record-pay"><span><a href="/record/pay">支付记录<span class="badge pull-right">{{ handler.initData.get("pay", "loading...") }}</span></a><span></li>
-                    <li nid="record-transfer"><span><a href="/record/transfer">转帐记录<span class="badge pull-right">{{ handler.initData.get("transfer", "loading...") }}</span></a><span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- 支付信息 -->
-              <div class="panel panel-default">
-                <div class="panel-heading" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                  <h4 class="panel-title">
-                    <span class="glyphicon glyphicon-shopping-cart"></span>
-                    <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"> 支付信息</a>
-                  </h4>
-                </div>
-                <div id="collapseFive" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <ul class="nav nav-pills nav-stacked">
-                      <li nid="pay-info"><span><a href="/pay-info/manage">支付信息管理</a></span></li>
-                      {#<li><span><a href="#">钱包余额支付<span class="badge pull-right">42</span></a></span></li>
-                      <li><span><a href="#">银联支付<span class="badge pull-right">2</span></a><span></li>
-                      <li><span><a href="#">银行卡快捷支付</a><span></li>
-                      <li><span><a href="#">易宝支付<span class="badge pull-right">暂未开通</span></a><span></a><span></li>
-                      <li><span><a href="#">短信支付<span class="badge pull-right">暂未开通</span></a><span></a><span></li>#}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% include "sidebar.html" %}
             <!-- 折叠窗口 - End -->
           </div>
-          <div class="col-md-9" style="padding-left:0px">
+          <div class="col-md-9">
               {% block main_content %}
               <div class="page-header">
                 <h1>Sticky footer with fixed navbar</h1>
@@ -221,14 +62,6 @@ $(document).ready(function(){
     //  //$('.collapse').collapse('hide')
     //  //$(this).find(".collapse").collapse("show");
     //})
-  {% if handler.initData|length < 4 %}
-    $.getJSON("/init-status",{},function(data, Status, xhr){
-        $("li[nid=record-deposit] a span").text(data.deposit);
-        $("li[nid=record-pay] a span").text(data.pay);
-        $("li[nid=record-transfer] a span").text(data.transfer);
-        $("li[nid=address-info] a span").text(data.address);
-    });
-  {% endif %}
 })
 </script>
 {% include "includes/logout.html" %}

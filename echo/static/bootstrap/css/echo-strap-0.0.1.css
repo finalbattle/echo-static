@@ -178,3 +178,9 @@ button.tipclose {
   cursor: -moz-grab;
   cursor: -webkit-grab;
 }
+/* Show code snippets when we have the space */
+@media (min-width: 481px) {
+  .highlight {
+    display: block;
+  }
+}
