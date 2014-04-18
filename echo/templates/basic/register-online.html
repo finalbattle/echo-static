@@ -1,0 +1,89 @@
+<form class="form-horizontal" role="form" style="width:542px">
+  <div class="form-group">
+    <label for="orderid" class="col-sm-2 control-label">证件号码</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="orderid" placeholder="">
+      <span class="help-block" name="orderid"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="username" class="col-sm-2 control-label">用户姓名</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="username" placeholder="">
+      <span class="help-block" name="username"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">交易密码</label>
+    <div class="col-sm-8">
+      <input type="password" class="form-control" id="password" placeholder="">
+      <span class="help-block" name="password"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="repeat_password" class="col-sm-2 control-label">确认密码</label>
+    <div class="col-sm-8">
+      <input type="password" class="form-control" id="repeat_password" placeholder="">
+      <span class="help-block" name="repeat_password"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-8">
+      <button type="button" class="btn btn-warning" onclick="do_register_online()">立即开通</button>
+    </div>
+  </div>
+</form>
+<script type="text/javascript">
+function do_register_online(){
+  var orderid = $("#orderid").val();
+  var username = $("#username").val();
+  var password = $("#password").val();
+  var repeat_password = $("#repeat_password").val();
+
+  $("span.help-block").html("")
+  if (orderid == null || orderid == ""){
+    $AlertBox({appendTo:$("span[name=orderid]"), html:"证件号码不能为空"}).show();
+    $("#orderid").focus();
+    return false;
+  }
+  if (username == null || username == ""){
+    $AlertBox({appendTo:$("span[name=username]"), html:"用户姓名不能为空"}).show();
+    $("#username").focus();
+    return false;
+  }
+  if (password == null || password == ""){
+    $AlertBox({appendTo:$("span[name=password]"), html:"交易密码不能为空"}).show();
+    $("#password").focus();
+    return false;
+  }
+  if (repeat_password != password){
+    $AlertBox({appendTo:$("span[name=repeat_password]"), html:"确认交易密码错误"}).show();
+    $("#repeat_password").focus();
+    return false;
+  }
+  
+  $MsgBox({id:"register_online_confirm_box", message:"确认使用该信息开通钱包吗？", appendTo:$("#container"), buttons:[
+        {text:"确定", action:function(){
+            $.ajax({
+                url: "/basic/register-online",
+                type:"post",
+                dataType:"json",
+                data:encodeURI("orderid={0}&username={1}&password={2}".format(orderid, username, SHA1(password))),
+                success: function(response){
+                  $("#register_online_confirm_box").tClose();
+                  if (response.result.return_code == 0){
+                    $MsgBox({message:"钱包开通成功!", appendTo:$("#container")}).show()
+                    window.location.reload();
+                  }else{
+                    $MsgBox({message:response.result.return_message, appendTo:$("#container")}).show()
+                  }
+                }
+            })
+        }},
+        {text:"取消", action:function(){
+          $("#register_online_confirm_box").tClose();
+        }}
+  ]}).show();
+}
+</script>
+

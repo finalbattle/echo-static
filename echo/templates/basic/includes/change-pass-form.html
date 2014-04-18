@@ -1,0 +1,79 @@
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="old_password" class="col-sm-2 control-label">旧密码</label>
+    <div class="col-sm-5">
+      <input type="password" class="form-control" id="old_password" placeholder="">
+      <span class="help-block" name="old_password"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="new_password" class="col-sm-2 control-label">新密码</label>
+    <div class="col-sm-5">
+      <input type="password" class="form-control" id="new_password" placeholder="">
+      <span class="help-block" name="new_password"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="repeat_password" class="col-sm-2 control-label">确认新密码</label>
+    <div class="col-sm-5">
+      <input type="password" class="form-control" id="repeat_password" placeholder="">
+      <span class="help-block" name="repeat_password"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-5">
+      <button type="button" class="btn btn-warning" onclick="do_change_pass()">修 改</button>
+    </div>
+  </div>
+</form>
+<script type="text/javascript">
+function do_change_pass(){
+  var url = '{{ url|default("/basic/change-pass") }}';
+  var old_password = $("#old_password").val();
+  var new_password = $("#new_password").val();
+  var repeat_password = $("#repeat_password").val();
+  $("span.help-block").html("")
+  if (old_password == null || old_password == ""){
+    $AlertBox({appendTo:$("span[name=old_password]"), html:"旧密码不能为空"}).show();
+    $("#old_password").focus();
+    return false;
+  }
+  if (new_password == null || new_password == ""){
+    $AlertBox({appendTo:$("span[name=new_password]"), html:"新密码不能为空"}).show();
+    $("#new_password").focus();
+    return false;
+  }
+  if (repeat_password == null || repeat_password == ""){
+    $AlertBox({appendTo:$("span[name=repeat_password]"), html:"重复新密码不能为空"}).show();
+    $("#repeat_password").focus();
+    return false;
+  }
+  if (repeat_password != new_password){
+    $AlertBox({appendTo:$("span[name=repeat_password]"), html:"重复密码错误"}).show();
+    $("#repeat_password").focus();
+    return false;
+  }
+  $MsgBox({id:"change_pass_box", message:"确认修改为新的密码吗？", appendTo:$("#container"), buttons:[
+        {text:"确定", action:function(){
+            $.ajax({
+                url: '{{ url|default("/basic/change-pass") }}',
+                type:"post",
+                dataType:"json",
+                data:"old_password={0}&new_password={1}".format(SHA1(old_password), SHA1(new_password)),
+                success: function(response){
+                  $("#change_pass_box").tClose();
+                  if (response.result.return_code == 0){
+                    $MsgBox({message:"密码修改成功", appendTo:$("#container")}).show()
+                  }else{
+                    $MsgBox({message:response.result.return_message, appendTo:$("#container")}).show()
+                  }
+                }
+            })
+        }},
+        {text:"取消", action:function(){
+          $("#change_pass_box").tClose();
+        }}
+  ]}).show();
+}
+</script>
+

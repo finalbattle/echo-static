@@ -1,0 +1,27 @@
+<script type="text/javascript">
+function do_logout(){
+  $MsgBox({id:"logout_box", message:"确认要注销用户吗？", appendTo:$("#container"), buttons:[
+        {text:"确认", loading_text:"正在注销...", id:"btn_assure", action:function(){
+            $("#btn_assure").button("loading");
+            $.ajax({
+              url:"/do_logout",
+              type:"get",
+              dataType: "json",
+              success: function(response){
+                $MsgBox({message:response.result.return_message, appendTo:$("div.container")}).show();
+                //setTimeout(function(){
+                  //$("#btn_assure").button("reset");
+                  window.location.href = "{{ request.uri }}";
+                //}, 1000)
+              },
+              failure: function(){
+                $MsgBox({message:"网络异常，请重试", appendTo:$("div.container")}).show();
+              }
+            })
+        }},
+        {text:"取消", action:function(){
+            $("#logout_box").tClose();
+        }}
+      ]}).show()
+}
+</script>

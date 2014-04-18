@@ -1,0 +1,152 @@
+  <div class="col-sm-7">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="phone" class="col-sm-2 control-label">邮箱地址</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="phone" placeholder="" onblur="checkUserExist()">
+          <span class="help-block" name="phone"></span>
+        </div>
+        <div class="col-sm-4">
+          <span name="success" style="display:none;" class="glyphicon-ok reg-success-icon"></span>
+          <span name="error" style="display:none;" class="glyphicon-remove reg-error-icon"></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-6">
+          <input type="password" class="form-control" id="password" placeholder="" onblur="checkInputVals('password')">
+          <span class="help-block" name="password"></span>
+        </div>
+        <div class="col-sm-4">
+          <span name="success" style="display:none;" class="glyphicon-ok reg-success-icon"></span>
+          <span name="error" style="display:none;" class="glyphicon-remove reg-error-icon"></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="repeat_password" class="col-sm-2 control-label">确认密码</label>
+        <div class="col-sm-6">
+          <input type="password" class="form-control" id="repeat_password" placeholder="" onblur="checkInputVals('repeat_password')">
+          <span class="help-block" name="repeat_password"></span>
+        </div>
+        <div class="col-sm-4">
+          <span name="success" style="display:none;" class="glyphicon-ok reg-success-icon"></span>
+          <span name="error" style="display:none;" class="glyphicon-remove reg-error-icon"></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+        <button type="button" id="do_reg" class="btn btn-warning" data-loading-text="正在提交..." data-complete-text="提交成功"  onclick="javascript:;">提 交</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+<script type="text/javascript">
+var chkFlag = true;
+
+function checkUserExist(callback){
+  $(".help-block").html("")
+  var phone = $("#phone").val();
+  if (phone == "" || phone == null){
+    $AlertBox({appendTo:$("span[name=phone]"), html:"手机号码不能为空"}).show();
+    $("#phone").focus();
+    $("#phone").parent().next().find("span[name=success]").css("display", "none")
+    $("#phone").parent().next().find("span[name=error]").css("display", "")
+    chkFlag = false;
+    return false;
+  }else{
+    $("#phone").parent().next().find("span[name=success]").css("display", "")
+    $("#phone").parent().next().find("span[name=error]").css("display", "none")
+  }
+  $.ajax({url:"/reg/check-user-exist", type:"POST", dataType:"json", data:"username={0}".format(phone), success:function(response){
+      if(response.result.return_code==0 && response.result.data==0){
+        $("#phone").parent().next().find("span[name=success]").css("display", "")
+        $("#phone").parent().next().find("span[name=error]").css("display", "none")
+        chkFlag = true;
+      }else{
+        $("#phone").parent().next().find("span[name=success]").css("display", "none")
+        $("#phone").parent().next().find("span[name=error]").css("display", "")
+        $AlertBox({appendTo:".help-block[name=phone]", html:"对不起，该用户已存在"}).show()
+        chkFlag = false;
+        return false;
+      }
+      if (callback) (callback)()
+  }})
+}
+
+function checkInputVals(breakPoint){
+  $(".help-block").html("")
+  var phone = $("#phone").val();
+  var phone_captcha = $("#phone_captcha").val();
+  var password = $("#password").val();
+  var repeat_password = $("#repeat_password").val();
+  $("span.help-block").html("")
+  if (password == "" || password == null){
+    $AlertBox({appendTo:$("span[name=password]"), html:"密码不能为空"}).show();
+    $("#password").focus();
+    $("#password").parent().next().find("span[name=success]").css("display", "none")
+    $("#password").parent().next().find("span[name=error]").css("display", "")
+    chkFlag = false;
+    return false;
+  }else{
+    $("#password").parent().next().find("span[name=success]").css("display", "")
+    $("#password").parent().next().find("span[name=error]").css("display", "none")
+  }
+  if (breakPoint == "password") return;
+  if (repeat_password == "" || repeat_password == null){
+    $AlertBox({appendTo:$("span[name=repeat_password]"), html:"确认密码不能为空"}).show();
+    $("#repeat_password").focus();
+    $("#repeat_password").parent().next().find("span[name=success]").css("display", "none")
+    $("#repeat_password").parent().next().find("span[name=error]").css("display", "")
+    chkFlag = false;
+    return false;
+  }else{
+    $("#repeat_password").parent().next().find("span[name=success]").css("display", "")
+    $("#repeat_password").parent().next().find("span[name=error]").css("display", "none")
+  }
+  if (password != repeat_password){
+    $AlertBox({appendTo:$("span[name=repeat_password]"), html:"确认密码有误"}).show();
+    $("#repeat_password").focus();
+    $("#repeat_password").parent().next().find("span[name=success]").css("display", "none")
+    $("#repeat_password").parent().next().find("span[name=error]").css("display", "")
+    chkFlag = false;
+    return false;
+  }else{
+    $("#repeat_password").parent().next().find("span[name=success]").css("display", "")
+    $("#repeat_password").parent().next().find("span[name=error]").css("display", "none")
+  }
+  if (breakPoint == "repeat_password") return;
+  chkFlag = true;
+}
+
+function do_register(){
+  $("#do_reg").button("loading");
+  var phone = $("#phone").val();
+  var phone_captcha = $("#phone_captcha").val();
+  var password = $("#password").val();
+  var repeat_password = $("#repeat_password").val();
+  checkInputVals();
+  if (chkFlag == false){
+    $("#do_reg").button("reset");
+    return false;
+  }
+  password = SHA1(password);
+  var params = "phone={0}&phone_captcha={1}&password={2}".format(phone, phone_captcha, password);
+  $.ajax({url:"/reg", type:"POST", dataType:"json", data:params, success:function(response){
+    if (response.result == true){
+      $("#do_reg").button("complete");
+      window.location.href = "/do_login?{{ request.query }}"
+      return true;
+    }else{
+      $MsgBox({appendTo:$("div.container"), title:"注册提示", message:response.message}).show();
+      $("#do_reg").button("reset");
+      return false
+    }
+  }, error:function(){
+    var text = "网络有误，请重新提交注册信息"
+    $("#do_reg").text(text);
+    $("#do_reg").button(text);
+  }})
+}
+</script>
+

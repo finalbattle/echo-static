@@ -1,0 +1,124 @@
+2014-04-11 13:04:13,804 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192653&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:04:13,850 hermes       INFO     API_REQ_TIME: START:[1397192653.83]_____END:[1397192653.85]_____USE:[0.0216829776764]
+2014-04-11 13:04:13,851 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192653', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:04:13,851 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:04:21,419 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192661&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:04:21,430 hermes       INFO     API_REQ_TIME: START:[1397192661.42]_____END:[1397192661.43]_____USE:[0.0103368759155]
+2014-04-11 13:04:21,431 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192661', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:04:21,431 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:04:59,944 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192699&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:04:59,955 hermes       INFO     API_REQ_TIME: START:[1397192699.95]_____END:[1397192699.96]_____USE:[0.0100200176239]
+2014-04-11 13:04:59,955 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192699', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:04:59,955 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:05:46,755 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192746&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:05:46,766 hermes       INFO     API_REQ_TIME: START:[1397192746.76]_____END:[1397192746.77]_____USE:[0.0101919174194]
+2014-04-11 13:05:46,766 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192746', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:05:46,766 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:06:05,739 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192765&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:06:05,750 hermes       INFO     API_REQ_TIME: START:[1397192765.74]_____END:[1397192765.75]_____USE:[0.0100119113922]
+2014-04-11 13:06:05,750 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192765', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:06:05,750 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:06:38,518 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192798&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:06:38,528 hermes       INFO     API_REQ_TIME: START:[1397192798.52]_____END:[1397192798.53]_____USE:[0.0101079940796]
+2014-04-11 13:06:38,529 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192798', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:06:38,530 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:06:42,233 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192802&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:06:42,243 hermes       INFO     API_REQ_TIME: START:[1397192802.23]_____END:[1397192802.24]_____USE:[0.0091769695282]
+2014-04-11 13:06:42,244 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192802', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:06:42,244 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:07:14,663 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192834&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:07:14,673 hermes       INFO     API_REQ_TIME: START:[1397192834.66]_____END:[1397192834.67]_____USE:[0.00959181785583]
+2014-04-11 13:07:14,673 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192834', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:07:14,673 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:07:56,258 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192876&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:07:56,270 hermes       INFO     API_REQ_TIME: START:[1397192876.26]_____END:[1397192876.27]_____USE:[0.0111491680145]
+2014-04-11 13:07:56,270 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192876', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:07:56,270 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:08:10,601 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192890&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:08:10,612 hermes       INFO     API_REQ_TIME: START:[1397192890.6]_____END:[1397192890.61]_____USE:[0.0105950832367]
+2014-04-11 13:08:10,612 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192890', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:08:10,613 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:09:04,877 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192944&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:09:04,888 hermes       INFO     API_REQ_TIME: START:[1397192944.88]_____END:[1397192944.89]_____USE:[0.0106339454651]
+2014-04-11 13:09:04,888 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192944', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:09:04,889 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:09:17,917 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192957&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:09:17,928 hermes       INFO     API_REQ_TIME: START:[1397192957.92]_____END:[1397192957.93]_____USE:[0.0107231140137]
+2014-04-11 13:09:17,928 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192957', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:09:17,928 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:09:43,456 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397192983&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:09:43,466 hermes       INFO     API_REQ_TIME: START:[1397192983.46]_____END:[1397192983.47]_____USE:[0.00975012779236]
+2014-04-11 13:09:43,466 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397192983', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:09:43,466 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:10:13,639 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193013&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:10:13,649 hermes       INFO     API_REQ_TIME: START:[1397193013.64]_____END:[1397193013.65]_____USE:[0.00929403305054]
+2014-04-11 13:10:13,649 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193013', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:10:13,649 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:10:41,654 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193041&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:10:41,665 hermes       INFO     API_REQ_TIME: START:[1397193041.65]_____END:[1397193041.67]_____USE:[0.0104510784149]
+2014-04-11 13:10:41,665 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193041', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:10:41,665 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:11:13,312 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193073&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:11:13,322 hermes       INFO     API_REQ_TIME: START:[1397193073.31]_____END:[1397193073.32]_____USE:[0.0102128982544]
+2014-04-11 13:11:13,322 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193073', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:11:13,323 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:12:02,267 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193122&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:12:02,280 hermes       INFO     API_REQ_TIME: START:[1397193122.27]_____END:[1397193122.28]_____USE:[0.0126850605011]
+2014-04-11 13:12:02,280 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193122', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:12:02,281 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:12:43,303 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193163&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:12:43,315 hermes       INFO     API_REQ_TIME: START:[1397193163.3]_____END:[1397193163.32]_____USE:[0.0116920471191]
+2014-04-11 13:12:43,315 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193163', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:12:43,315 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:13:29,971 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193209&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:13:29,980 hermes       INFO     API_REQ_TIME: START:[1397193209.97]_____END:[1397193209.98]_____USE:[0.00928401947021]
+2014-04-11 13:13:29,980 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193209', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:13:29,980 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:14:39,481 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193279&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:14:39,501 hermes       INFO     API_REQ_TIME: START:[1397193279.48]_____END:[1397193279.5]_____USE:[0.0197319984436]
+2014-04-11 13:14:39,501 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193279', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:14:39,501 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:15:59,249 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193359&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:15:59,258 hermes       INFO     API_REQ_TIME: START:[1397193359.25]_____END:[1397193359.26]_____USE:[0.00896382331848]
+2014-04-11 13:15:59,258 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193359', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:15:59,259 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:16:42,605 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193402&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:16:42,615 hermes       INFO     API_REQ_TIME: START:[1397193402.61]_____END:[1397193402.62]_____USE:[0.0097119808197]
+2014-04-11 13:16:42,615 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193402', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:16:42,615 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:17:02,661 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193422&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:17:02,672 hermes       INFO     API_REQ_TIME: START:[1397193422.66]_____END:[1397193422.67]_____USE:[0.0101900100708]
+2014-04-11 13:17:02,672 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193422', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:17:02,673 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:19:10,251 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193550&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:19:10,261 hermes       INFO     API_REQ_TIME: START:[1397193550.25]_____END:[1397193550.26]_____USE:[0.00944495201111]
+2014-04-11 13:19:10,262 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193550', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:19:10,262 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:22:38,717 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193758&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:22:38,728 hermes       INFO     API_REQ_TIME: START:[1397193758.72]_____END:[1397193758.73]_____USE:[0.0102481842041]
+2014-04-11 13:22:38,729 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193758', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:22:38,729 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:23:15,049 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193795&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:23:15,059 hermes       INFO     API_REQ_TIME: START:[1397193795.05]_____END:[1397193795.06]_____USE:[0.00926208496094]
+2014-04-11 13:23:15,059 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193795', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:23:15,059 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:23:35,588 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193815&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:23:35,599 hermes       INFO     API_REQ_TIME: START:[1397193815.59]_____END:[1397193815.6]_____USE:[0.0103421211243]
+2014-04-11 13:23:35,599 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193815', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:23:35,599 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:23:47,093 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397193827&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:23:47,103 hermes       INFO     API_REQ_TIME: START:[1397193827.09]_____END:[1397193827.1]_____USE:[0.00999903678894]
+2014-04-11 13:23:47,103 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397193827', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:23:47,104 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 13:28:40,335 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397194120&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 13:28:40,345 hermes       INFO     API_REQ_TIME: START:[1397194120.34]_____END:[1397194120.35]_____USE:[0.00970196723938]
+2014-04-11 13:28:40,346 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397194120', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 13:28:40,346 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 15:22:42,252 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397200962&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 15:22:42,263 hermes       INFO     API_REQ_TIME: START:[1397200962.25]_____END:[1397200962.26]_____USE:[0.0108909606934]
+2014-04-11 15:22:42,264 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397200962', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 15:22:42,264 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}
+2014-04-11 15:23:17,307 hermes       INFO     *****API_REQ_ALL: http://192.168.0.36:10000/platform/api?appkey=610059&timestamp=1397200997&serverkey=610059&channel_id=10004&sessionid=&deviceid=deviceid&method=ih.user.internal.validateSession&api_version=1
+2014-04-11 15:23:17,316 hermes       INFO     API_REQ_TIME: START:[1397200997.31]_____END:[1397200997.32]_____USE:[0.00901889801025]
+2014-04-11 15:23:17,316 hermes       INFO     API_REQ_DATA: {'appkey': 610059, 'timestamp': '1397200997', 'serverkey': 610059, 'channel_id': '10004', 'sessionid': '', 'deviceid': 'deviceid', 'method': 'ih.user.internal.validateSession', 'api_version': '1'}
+2014-04-11 15:23:17,316 hermes       INFO     API_RES_DATA: {"return_message": "Argument:[sessionid] can not be empty.", "return_code": -301002}

@@ -1,0 +1,50 @@
+app: echo
+language: python
+
+static_dir: static
+static_url: /static/
+static_domain: /static
+#static_domain: http://static.echo.com
+
+schemes:
+  - scheme: mysql
+    user: gateway
+    pass: gateway
+    host: 192.168.0.36
+    port: 3306
+    db: gateway
+    storm: store
+    sqlalchemy: session
+  - scheme: mysql
+    alias: pay
+    user: pay
+    pass: pay
+    host: 192.168.0.36
+    port: 3306
+    db: pay
+    sqlalchemy: paysession
+  - scheme: mysql
+    alias: wallet
+    user: wallet
+    pass: wallet
+    host: 192.168.0.36
+    port: 3306
+    db: wallet
+    sqlalchemy: wtsession
+
+memcached: ['127.0.0.1:11211']
+
+############################################
+# SessionStore
+# MemcachedSessionStore
+############################################
+#session_store: MemcachedSessionStore
+session_store: RedisSessionStore
+
+redis:
+  prefix: echo
+  host: 192.168.0.36
+  port: 6379
+  password: test
+  timeout: 5
+  expire: 86400

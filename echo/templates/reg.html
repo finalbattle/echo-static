@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}注册{% endblock %}
+{% block layout_css %}
+<link rel="stylesheet" href="/static/bootstrap/css/layout/bootstrap.css">
+<link rel="stylesheet" href="/static/bootstrap/css/signin.css">
+{% endblock %}
+{% block layout_body %}
+<div class="container">
+<ul class="nav nav-tabs" id="_reg_id">
+  <li class="active"><a href="#reg-phone" evalue="reg-phone" data-toggle="tab" onclick="$(this).blur()">手机注册</a></li>
+  <li><a href="#reg-email" evalue="reg-email" data-toggle="tab" onclick="$(this).blur()">邮箱注册</a></li>
+  <li><a href="#reg-orderid" evalue="reg-orderid" data-toggle="tab" onclick="$(this).blur()">证件注册</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="reg-phone">
+    <div class="panel">
+      <div class="panel-body">
+        <p>
+        <div class="row">
+          <div class="col-sm-3 text-center">
+            <h2 class="form-signin-heading">{{ app_name }}</h2>
+            <ul class="pager">
+              <li><a href="/do_login?{{ request.query }}"><span class="glyphicon glyphicon-backward"></span> 返回登录</a></li>
+            </ul>
+          </div>
+        
+        {% include "reg/includes/%s.html" % reg_id %}
+        </div>
+        </p>
+      </div>
+    </div>
+  </div>
+  {#<div class="tab-pane fade" id="reg-email">
+    <div class="panel">
+      <div class="panel-body">
+        <p>
+          {% include "reg/includes/reg-email.html" %}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="reg-orderid">
+    <div class="panel">
+      <div class="panel-body">
+        <p>
+        </p>
+      </div>
+    </div>
+  </div>#}
+</div>
+
+
+</div> <!-- /container -->
+<script type="text/javascript">
+$(function(){
+    $ParamsBox({controls:[$(".nav.nav-tabs")], extraParams:"{{ request.query }}"})
+})
+</script>
+{% endblock %}

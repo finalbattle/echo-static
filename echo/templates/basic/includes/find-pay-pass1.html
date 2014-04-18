@@ -1,0 +1,54 @@
+<form class="form-horizontal" role="form" style="width:542px">
+  <div class="form-group">
+    <label for="orderid" class="col-sm-2 control-label">证件号码</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="orderid" placeholder="">
+      <span class="help-block" name="orderid"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="username" class="col-sm-2 control-label">用户姓名</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="username" placeholder="">
+      <span class="help-block" name="username"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-8">
+      <button type="button" class="btn btn-warning" onclick="do_chkUserInfo()">下一步</button>
+    </div>
+  </div>
+</form>
+<script type="text/javascript">
+function do_chkUserInfo(){
+  var orderid = $("#orderid").val();
+  var username = $("#username").val();
+
+  $("span.help-block").html("")
+  if (orderid == null || orderid == ""){
+    $AlertBox({appendTo:$("span[name=orderid]"), html:"证件号码不能为空"}).show();
+    $("#orderid").focus();
+    return false;
+  }
+  if (username == null || username == ""){
+    $AlertBox({appendTo:$("span[name=username]"), html:"用户姓名不能为空"}).show();
+    $("#username").focus();
+    return false;
+  }
+  
+  $.ajax({
+      url: "/basic/find-pay-pass",
+      type:"post",
+      dataType:"json",
+      data:encodeURI("orderid={0}&username={1}".format(orderid, username)),
+      success: function(response){
+        $("#register_online_confirm_box").tClose();
+        if (response.result.return_code == 0){
+          $("#profile div.panel-body").html(response.result.tmpl);
+        }else{
+          $MsgBox({message:response.result.return_message, appendTo:$("#container")}).show()
+        }
+      }
+  })
+}
+</script>
