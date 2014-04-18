@@ -387,11 +387,11 @@ $.fn.drags = function(opt) {
  */
 $.fn.stick = function(options){
   var pos = 'bottomleft'; var edge = 'topleft'; var rel = $(document.body);
-  var animate = true;
+  //var animate = false;
   // if need shadow, do shadow
   //if(options && options.animate) animate = options.animate;
   options = options || {}
-  animate = options.animate === false ? false:true;
+  var animate = $chk(options.animate) == false ? false:true;
   if(options && options.modal && !$chk(this.shadow)) this.createShadow();
   if(options && options.position) pos = options.position;
   if(options && options.edge) edge = options.edge;
@@ -412,12 +412,12 @@ $.fn.stick = function(options){
       var size = {width: parseInt(this.css("width")), height: parseInt(this.css("height"))}
       var center_pos = {left:(winsize.x-parseInt(size.width))/2+winscroll.x, top:(winsize.y-parseInt(size.height))/2+winscroll.y}
       //var center_pos = {left:(winsize.x-winscroll.y-size.width)/2, top:(winsize.y-winscroll.y-size.height)/2}
-      if (animate == false){
-        this.offset(center_pos)
-      }else{
-        this.css({top:winscroll.y-size.height, left:center_pos.left, opacity:"0.1"})
-        this.animate({top:center_pos.top, left:center_pos.left, opacity:"1"}, "slow")
-      }
+      //if (animate == false){
+        this.css(center_pos)
+      //}else{
+      //  this.css({top:winscroll.y-size.height, left:center_pos.left, opacity:"0.1"})
+      //  this.animate({top:center_pos.top, left:center_pos.left, opacity:"1"}, "slow")
+      //}
       var dim = {left:this.offset().left, top:this.offset().top, width:parseInt(this.css("width")), height:parseInt(this.css("height")), bottom:parseInt(this.css("height"))+this.offset().top, right:this.offset().left + parseInt(this.css("width"))}
       var pos = { x: center_pos.left, y: center_pos.top }; var chg_pos = false;
       if (dim.left < 0) { pos.x = 0; chg_pos = true; }
@@ -433,11 +433,16 @@ $.fn.stick = function(options){
       }
       if (chg_pos) {
         this.offset({left:pos.x,top:pos.y});
+        center_pos = {left:pos.x,top:pos.y};
         //if (animate == false){
         //}else{
         //  this.css({top:"0px"})
         //  this.animate({top:pos.y, left:pos.x, opacity:"1"}, "slow")
         //}
+      }
+      if (animate==true){
+        this.css({top:winscroll.y-size.height, left:center_pos.left, opacity:"0.1"})
+        this.animate({top:center_pos.top, left:center_pos.left, opacity:"1"}, "slow")
       }
   }
   return this;
@@ -481,10 +486,15 @@ $.fn.fshow = function(options){
   if (options.drag_handle) $(this).drags({handle:options.drag_handle});
 }
 
-$.fn.tClose = function(){
-  //this.remove();
+$.fn.tClose = function(options){
+  options = options || {};
+  var animate = $chk(options.animate) == false ? false:true;
   var self = this;
-  this.animate({top:"0px", opacity:"0"}, "slow", function(){self.remove();})
+  if (animate == true){
+    this.animate({top:"0px", opacity:"0"}, "slow", function(){self.remove();})
+  }else{
+    this.remove();
+  }
   try{
     delete this;
     $(".modal-backdrop").remove();
@@ -499,10 +509,17 @@ $.fn.tClose = function(){
   }catch(e){}
 }
 
-$.fn.tHide = function(){
+$.fn.tHide = function(options){
   //this.css("display", "none");
   var self = this;
-  this.animate({top:"0px", opacity:"0"}, "slow", function(){self.css("display", "none");})
+  options = options || {};
+  var animate = $chk(options.animate) == false ? false:true;
+  var self = this;
+  if (animate == true){
+    this.animate({opacity:"0"}, "fast", function(){self.css("display", "none");})
+  }else{
+    this.css({"display": "none"})
+  }
   try{
     delete this;
     $(".modal-backdrop").remove();
@@ -536,7 +553,12 @@ $.fn.tLoading = function(_loading_text){
   try{
     if (this[0].tagName.toLowerCase() == "a"){
       this.html(loading_text)
-      this.after("<a href='javascript:;'>"+loading_text+"</a>")
+      var dom = $(document.createElement('a'));
+      dom.css(this.attr("style"))
+      dom.attr("class", this.attr("class"))
+      dom.html(loading_text)
+      //this.after("<a href='javascript:;'>"+loading_text+"</a>")
+      this.after(dom)
       this.css('display', 'none');
     }
   }catch(e){}
