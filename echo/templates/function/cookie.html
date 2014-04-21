@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block title %}Cookie{% endblock %}
+{% block main_content %}
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1>Cookie</h1>
+  </div>
+  <p>设置/获取客户端Cookie值。</p>
+  <h2>参数</h2>
+  <div class="bs-example">
+    <pre>
+name, value, {
+  path:"",
+  domain:"",
+  secure:"",
+  expires:"",
+}expire</pre>
+  </div>
+  <h2>获取cookie</h2>
+  <div class="bs-example">
+    <pre>$cookie("my-key")</pre>
+  </div>
+  <h4>效果展示</h4>
+  <button type="button" id="button" class="btn btn-primary">确定</button>
+  <h2>设置cookie</h2>
+  <div class="bs-example">
+    <pre>$cookie("my-key", $generateId({randomStr:"ABCDabcd1234", length:6}))</pre>
+  </div>
+  <h4>效果展示</h4>
+  <button type="button" id="button2" class="btn btn-primary">确定</button>
+  <h2>删除cookie</h2>
+  <div class="bs-example">
+    <pre>$.removeCookie("my-key")</pre>
+  </div>
+  <h4>效果展示</h4>
+  <button type="button" id="button3" class="btn btn-primary">确定</button>
+</div>
+<script type="text/javascript" >
+$(function(){
+  $("#button").bind("click", function(){
+    $ToolBox({
+        title:"get cookie", 
+        message:"cookie:{0}:{1}".format("my-key", $cookie("my-key"))
+    }).show()
+  })
+  $("#button2").bind("click", function(){
+    $cookie("my-key", $generateId({randomStr:"ABCDabcd1234", length:6}))
+    $ToolBox({
+        title:"set cookie", 
+        message:"cookie:{0} is set to {1}".format("my-key", $cookie("my-key"))
+    }).show()
+  })
+  $("#button3").bind("click", function(){
+    //$.removeCookie('the_cookie', { path: '/' });
+    $removeCookie('my-key');
+    $ToolBox({
+        title:"set cookie", 
+        message:"cookie:{0} is deleted {1}".format("my-key", $cookie("my-key"))
+    }).show()
+  })
+  
+})
+</script>
+{% endblock %}

@@ -1,24 +1,38 @@
 {% extends "layout.html" %}
-{% block title %}字符串{% endblock %}
+{% block title %}拖动效果{% endblock %}
 {% block main_content %}
 <div class="bs-docs-section">
   <div class="page-header">
-    <h1 id="code">字符串格式化</h1>
+    <h1>拖动效果</h1>
   </div>
-  <h2>语法</h2>
-  <p>一般用于较长的字符串进行格式化输出。</p>
+  <h2>效果展示</h2>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Panel title</h3>
+    </div>
+    <div class="panel-body">
+      Panel content
+    </div>
+    <div class="panel-footer">Panel footer</div>
+  </div>
+  <h2>参数</h2>
   <div class="bs-example">
-    <pre>"hello {0}".format("world")</pre>
+    <pre>
+    {
+        handle: "",
+        cursor: "move",
+        draggableClass: "draggable",
+        activeHandleClass: "active-handle"
+    }</pre>
   </div>
-  <p>输出结果：<code>hello world</code></p>
-  
-  <div class="page-header">
-    <h1 id="code">解析url参数</h1>
-  </div>
-  <h2>语法</h2>
+  <h2>代码</h2>
   <div class="bs-example">
-    <pre>"name=Tom&age=20&birthday=1990-04-23".parseQueryString()</pre>
+    <pre>$("#dom-id").drags({handle:$("drag-dom-id")})</pre>
   </div>
-  <p>输出结果：<code>{name:"Tom", age:"20", birthday:"1990-04-23"}</code></p>
 </div>
+<script type="text/javascript" >
+$(function(){
+  $("div.panel").drags({handle:$("div.panel-heading")})
+})
+</script>
 {% endblock %}

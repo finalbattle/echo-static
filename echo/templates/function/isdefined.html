@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}对象检查{% endblock %}
+{% block main_content %}
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1>对象检查</h1>
+  </div>
+  <h2>$defined</h2>
+  <p>检查js代码中某变量是否已经定义(是否是undefined)</p>
+  <h2>代码</h2>
+  <div class="bs-example">
+    <pre>$defined(option.abc)</pre>
+  </div>
+  <h2>返回结果</h2>
+  <div class="bs-example">
+    <pre>
+true / false</pre>
+  </div>
+  
+  <h2>$chk</h2>
+  <p>检查js代码中某变量是否已经定义(是否是undefined, 是否是null，是否是"", 是否是0)</p>
+  <h2>代码</h2>
+  <div class="bs-example">
+    <pre>$chk(option.abc)</pre>
+  </div>
+  <h2>返回结果</h2>
+  <div class="bs-example">
+    <pre>
+true / false</pre>
+  </div>
+</div>
+{% endblock %}

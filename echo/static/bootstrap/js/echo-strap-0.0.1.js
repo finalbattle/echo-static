@@ -619,8 +619,8 @@ $isBrowser = function(){
     if (Sys.ie) return "IE";
     if (Sys.firefox) return "FIREFOX"; 
     if (Sys.chrome) return "CHROME";
-    if (Sys.opera) return "Opera";
-    if (Sys.safari) return "Safari"; 
+    if (Sys.opera) return "OPERA";
+    if (Sys.safari) return "SAFARI"; 
 } 
 
 $chk = function(obj){
@@ -636,7 +636,39 @@ function $ifBody(element){
   if(!$chk(element)) return false;
   return (/^(?:body|html)$/i).test(element.tagName);
 }
-
+$checkAll = function(parent, chkall){
+    var childs = $(parent).find("input");
+    for (var i = 0; i < childs.length; i++) {
+		if($chk(childs[i].type) && childs[i].type=='checkbox')
+        	$(childs[i]).prop("checked", $(chkall).prop("checked"));
+    }
+}
+$getCheckIds = function(parent, exclude_chkall){
+    var ptable = $(parent); var ids = []; exclude_chkall = $(exclude_chkall);
+    var childs = ptable.find("input");
+    for (var i = 0; i < childs.length; i++) {
+      var child = $(childs[i]);
+      if($chk(exclude_chkall)){
+        if (child.prop("checked") == true && child[0] != exclude_chkall[0])  ids.push(child.prop("id"));
+      }else{
+        if (child.prop("checked") == true)  ids.push(child.prop("id"));
+      }
+    }
+    return ids;
+}
+$getCheckValues = function(parent, exclude_chkall){
+    var ptable = $(parent); var vals = []; exclude_chkall = $(exclude_chkall);
+    var childs = ptable.find("input");
+    for (var i = 0; i < childs.length; i++) {
+      var child = $(childs[i]);
+      if($chk(exclude_chkall)){
+        if (child.prop("checked") == true && child[0] != exclude_chkall[0])  vals.push(child.val());
+      }else{
+        if (child.prop("checked") == true)  vals.push(child.val());
+      }
+    }
+    return vals;
+}
 $getChkVals = function(parent, chkall){
     var ptable = $(parent); var ids = []; chkall = $(chkall);
     var childs = ptable.find("input");
@@ -722,6 +754,10 @@ $cookie = function(name, value, options) {
     return cookieValue;
   }
 };
+
+$removeCookie = function(name){
+  document.cookie = name + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+}
 
 /**
  * ***************************************************************************************************

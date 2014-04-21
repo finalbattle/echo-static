@@ -12,8 +12,20 @@ class Index(Handler):
 class Basic(Handler):
     def get(self):
         return self.render("basic/%s.html" % self.kwargs["action"], action=self.kwargs["action"])
-#@url("/dom/drags", action="drags")
-#@url("/fshow", action="fshow")
+@url("/dom/drags", action="drags")
+@url("/dom/fshow", action="fshow")
+@url("/dom/buttons", action="buttons")
+class Dom(Handler):
+    def get(self):
+        return self.render("dom/%s.html" % self.kwargs["action"], action=self.kwargs["action"])
+@url("/function/isbrowser", action="isbrowser")
+@url("/function/isdefined", action="isdefined")
+@url("/function/getchkvals", action="getchkvals")
+@url("/function/generateId", action="generateId")
+@url("/function/cookie", action="cookie")
+class Dom(Handler):
+    def get(self):
+        return self.render("function/%s.html" % self.kwargs["action"], action=self.kwargs["action"])
 #@url("/inputs", action="inputs")
 #@url("/forms", action="forms")
 #@url("/pages", action="pages")
