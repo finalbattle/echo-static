@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}工具提示框{% endblock %}
+{% block main_content %}
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1>工具提示框</h1>
+  </div>
+  <p>通过一行简单的js代码，即可实现工具提示框效果。</p>
+  <h2>参数</h2>
+  <div class="bs-example">
+    <pre>
+{
+  id:$generateId(),
+  title:"Title",
+  message:"",
+  html:"",
+  buttons:[],
+}</pre>
+  </div>
+  <h2>代码</h2>
+  <div class="ps-example">
+    <pre>
+$ToolBox({
+  id:"toolbox", 
+  appendTo:$("div.bs-docs-section"), 
+  message:"Hello Word", 
+  title:"提示", 
+  buttons:[{text:"确定", action:function(){
+      $("#toolbox").tClose();
+    }}]
+}).show()</pre>
+  </div>
+  <h2>效果展示</h2>
+  <button type="button" id="button" class="btn btn-primary">工具提示框</button>
+  <h2>关闭弹出框</h2>
+  <div class="bs-example">
+    <pre>$("#toolbox").tClose()</pre>
+  </div>
+</div>
+<script type="text/javascript" >
+$(function(){
+  $("#button").bind("click", function(){
+    $ToolBox({id:"toolbox", message:"Hello Word", title:"提示", buttons:[{text:"确定", action:function(){
+  $("#toolbox").tHide();
+}}]}).show()
+  })
+})
+</script>
+{% endblock %}

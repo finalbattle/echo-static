@@ -1150,11 +1150,11 @@ $ParamsBox = function(options){ return new $ParamsBox.fn.init(options); }; $Para
           for(var j=0; j<this._submitButtons.length; j++){
             //this._submitButtons.each(function(item){
                 var item = this._submitButtons[j]
-                if(item && item.attr("type")=='button') item.bind('click',function(){ self.goUrl(); });
+                if(item && item[0].type=='button') item.bind('click',function(){ self.goUrl(); });
                 // 给文本框增加回车即查询功能
-                if(item && item.attr("type")=='text'){
+                if(item && item[0].type=='text'){
                     item.bind('keydown',function(event){
-                        if(event.key == 'enter' && !event.control && !event.shift && !event.alt){
+                        if(event.keyCode == 13 && !event.ctrlKey && !event.shiftKey && !event.altKey){
                             self.goUrl();
                         }
                     });
@@ -1196,7 +1196,8 @@ $ParamsBox = function(options){ return new $ParamsBox.fn.init(options); }; $Para
                     ret = $(links[i]).attr('evalue'); break;
                 }
             }
-        }else if(obj.attr("type")=='text' || obj.attr("type")=='hidden' || obj.attr("type")==''){
+        //}else if(obj.attr("type")=='text' || obj.attr("type")=='hidden' || obj.attr("type")==''){
+        }else if(obj[0].type=='text' || obj[0].type=='hidden' || obj[0].type==''){
           ret = obj.val();
         }
         return ret;
@@ -1236,7 +1237,8 @@ $ParamsBox = function(options){ return new $ParamsBox.fn.init(options); }; $Para
             for (var i = 0; i < uls.length; i++) {
               var pname = $(uls[i]).attr('eparent');
                 if($chk(pname) && pname == id){
-                    this.setState(uls[i],-1);
+                    //this.setState(uls[i],-1);
+                    this.setState($(uls[i]).attr("id"),-1);
                 }
             }
         }
