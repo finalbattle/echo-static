@@ -38,6 +38,15 @@
           <button type="button" id="submitButton" class="btn btn-primary">筛选</button>
         </div>
       </div>
+      <div class="form-group">
+        你选择了 
+        {% set _types1 = handler.args.get("types1", "-1") %}
+        {% set _types2 = handler.args.get("types2", "-1") %}
+        {% set _keyword = handler.args.get("keyword", "") %}
+        {% if _types1 != "-1" %}<button type="button" class="btn btn-success" >{{ _types1 }}<button type="button" class="close">&times;</button></button>{% endif %}
+        {% if _types2 != "-1" %}<input type="button" class="btn btn-success" value="{{ _types2 }}"/>{% endif %}
+        {% if _keyword != "" %}<input type="button" class="btn btn-success" value="{{ _keyword }}"/>{% endif %}
+      </div>
     </div>
 
   </p>
@@ -67,10 +76,8 @@
   &lt;div class="form-group"&gt;
     &lt;label for="types" class="col-sm-2 control-label"&gt;分类2&lt;/label&gt;
     &lt;div class="nav nav-pills paramsbox" id="types2" eparent="types"&gt;
-      &lt;li class="active"&gt;&lt;a href="javascript:;" evalue="-1"&gt;Default&lt;/a&gt;&lt;/li&gt;
-      {% for tp in types2 %}
-      &lt;li&gt;&lt;a href="javascript:;" evalue="{{ tp }}"&gt;{{ tp }}&lt;/a&gt;&lt;/li&gt;
-      {% endfor %}
+      &lt;li class="active"&gt;&lt;a href="javascript:;" evalue="-1"&gt;Default&lt;/a&gt;&lt;/li&gt;{% for tp in types2 %}
+      &lt;li&gt;&lt;a href="javascript:;" evalue="{{ tp }}"&gt;{{ tp }}&lt;/a&gt;&lt;/li&gt;{% endfor %}
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="form-group"&gt;

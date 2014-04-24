@@ -13,8 +13,8 @@ sys.setdefaultencoding("utf-8")
 
 
 if __name__ == '__main__':
-    debug = True
-    #debug = False
+    #debug = True
+    debug = False
     usage = "usage: prog [options] arg1"
     default_port = 8123
     options = OptionParser(usage)
