@@ -25,4 +25,5 @@ if __name__ == '__main__':
     if debug:
         tornado.options.parse_command_line(args)
     app = make_application(echo, debug, wsgi=False)
+    #setattr(app, "add_slash", True)
     run_torweb.run(app, port=option.port)
