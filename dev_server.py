@@ -13,10 +13,13 @@ sys.setdefaultencoding("utf-8")
 
 
 if __name__ == '__main__':
-    #debug = True
-    debug = False
+    import platform
+    if platform.uname()[1] == "zhangpeng-ThinkPad-T430":
+        debug = True
+    else:
+        debug = False
     usage = "usage: prog [options] arg1"
-    default_port = 8123
+    default_port = 8186
     options = OptionParser(usage)
     options.add_option("-p", "--port", dest="port", default=default_port,
                        help="server listenning port, default is %s" % default_port,
