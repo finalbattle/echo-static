@@ -821,29 +821,17 @@ $MsgBox = function(options){ return new $MsgBox.fn.init(options); }; $MsgBox.fn 
    * 生成对话框
    */
   createBox: function(){
-    var div = document.createElement("div");
     var self = this;
-    $(div).addClass("modal")
-          .attr({id:this._id, 
-                 tabindex:-1, 
-                 role:"dialog", 
-                 "aria-labelledby":"myModalLabel",
-                 "aria-hidden":"true", 
-                 style:"display:none"})
-    if (this._moveSpeed!=null) $(div).addClass("fade")
-    var modal_dialog = document.createElement("div"); 
-      $(modal_dialog).addClass("modal-dialog").appendTo($(div));
-    var modal_content = document.createElement("div"); 
+    var modal_dialog = document.createElement("div");
+    $(modal_dialog).attr({id:this._id, style:"display:none"}).addClass("modal-dialog").appendTo($(document.body));
+    var modal_content = document.createElement("div");
       $(modal_content).addClass("modal-content").appendTo($(modal_dialog));
-    var modal_header = document.createElement("div"); 
+    var modal_header = document.createElement("div");
       $(modal_header).addClass("modal-header").appendTo($(modal_content));
-    $(div).drags({handle:modal_header});
+    $(modal_dialog).drags({handle:modal_header});
     if(this._closeBtn == "show"){
       var button = document.createElement("button");
       $(button).addClass("close")
-            //.attr({type:"button", 
-            //       "data-dismiss":"modal", 
-            //       "aria-hidden":"true"})
             .text("×")
             .bind("click", function(){
               $("#"+self._id).tClose();
@@ -861,8 +849,7 @@ $MsgBox = function(options){ return new $MsgBox.fn.init(options); }; $MsgBox.fn 
       var modal_footer = document.createElement("div");
         $(modal_footer).addClass("modal-footer").appendTo($(modal_content));
     }
-    $(div).appendTo(this._options.appendTo);
-    this._modal_dialog = $(div);
+    this._modal_dialog = $(modal_dialog);
     this.appendButtons(this._buttons);
     return this;
   },
@@ -911,26 +898,10 @@ $MsgBox = function(options){ return new $MsgBox.fn.init(options); }; $MsgBox.fn 
   /**
    * 显示弹出框
    */
-  show: function(){
-    //$('#'+this._options.id).modal("show");
-    $('#'+this._options.id).modal({backdrop:this._backdrop});
-    var winsize = {x:$(window).width(), y:$(window).height()}
+  show: function(opts){
     var self = this;
-    if (self._modal_dialog.find(".modal-body").html() == "") self._modal_dialog.find(".modal-body").css("display", "none");
-    if (this._moveSpeed!=null){
-      $('#'+this._options.id).on('shown.bs.modal', function(e){
-        var _height = $(this).find('div.modal-dialog').css('height');
-        var _top = (winsize.y - parseInt(_height)) / 2;
-        $(this).find('div.modal-dialog').animate({top:_top}, self._moveSpeed);
-      })
-    }else{
-      var _height = $('#'+this._options.id).find('div.modal-dialog').css('height');
-      var _top = (winsize.y - parseInt(_height)) / 2;
-      if (_top < 0) _top = 0;
-      $('#'+this._options.id).find('div.modal-dialog').css('top', _top);
-    }
-    if (this._shadow != "show") $(".modal-backdrop").remove();
-    return this;
+    opts = $.extend({modal:true, animate:true}, opts)
+    $('#'+this._options.id).fshow(opts);
   }
 }; $MsgBox.fn.init.prototype = $MsgBox.fn;
 
