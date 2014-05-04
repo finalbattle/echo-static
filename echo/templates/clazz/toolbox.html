@@ -22,13 +22,12 @@
     <pre>
 $ToolBox({
   id:"toolbox", 
-  appendTo:$("div.bs-docs-section"), 
   message:"Hello Word", 
   title:"提示", 
   buttons:[{text:"确定", action:function(){
       $("#toolbox").tClose();
     }}]
-}).show()</pre>
+}).show({modal:false, relativeTo:$("#button")})</pre>
   </div>
   <h2>效果展示</h2>
   <button type="button" id="button" class="btn btn-primary">工具提示框</button>
@@ -42,7 +41,7 @@ $(function(){
   $("#button").bind("click", function(){
     $ToolBox({id:"toolbox", message:"Hello Word", title:"提示", buttons:[{text:"确定", action:function(){
   $("#toolbox").tHide();
-}}]}).show()
+}}]}).show({modal:false, relativeTo:$("#button")})
   })
 })
 </script>

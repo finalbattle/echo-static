@@ -399,7 +399,29 @@ $.fn.stick = function(options){
   else if(options && options.event) rel = options.event.target || options.event.srcElement;
   if (rel == $(document.body)) { pos = 'center'; edge = 'center'; }
   //this.position({position:pos,edge:edge,relativeTo:rel});
-  this.css({position:"absolute", "z-index":"65520"}).appendTo($(rel))
+  //this.css({position:"absolute", "z-index":"65520"}).appendTo($(rel))
+  this.css({position:"absolute", "z-index":"65520"}).appendTo($(document.body))
+  // 设置元素relative位置
+   var left = 0, top = 0;
+   var direction = options.direction || "bottom";
+   if (direction == 'bottom'){
+     left = parseInt($(rel).css("width")) / 2 + $(rel).offset().left - parseInt(this.css("width")) / 2;
+     top = parseInt($(rel).css("height")) + $(rel).offset().top;
+   }
+   if (direction == 'top'){
+     left = parseInt($(rel).css("width")) / 2 + $(rel).offset().left - parseInt(this.css("width")) / 2;
+     top = $(rel).offset().top - parseInt(this.css("height"));
+   }
+   if (direction == 'left'){
+     left = $(rel).offset().left - parseInt(this.css("width"));
+     top = parseInt($(rel).css("height")) / 2 + $(rel).offset().top - parseInt(this.css("height")) / 2;
+   }
+   if (direction == 'right'){
+     left = parseInt($(rel).css("width")) + $(rel).offset().left;
+     top = parseInt($(rel).css("height")) / 2 + $(rel).offset().top - parseInt(this.css("height")) / 2;
+   }
+  // 设置元素relative位置 ---- end 
+
   this.show();
   if(options && options.offset){
       if(options.offset.x) this.css("left", this.css('left').toInt() + options.offset.x + 'px');
@@ -410,7 +432,11 @@ $.fn.stick = function(options){
       var winscroll = {y:$(window).scrollTop(), x:$(window).scrollLeft()};
       var winsize = {x:$(window).width(), y:$(window).height()}
       var size = {width: parseInt(this.css("width")), height: parseInt(this.css("height"))}
-      var center_pos = {left:(winsize.x-parseInt(size.width))/2+winscroll.x, top:(winsize.y-parseInt(size.height))/2+winscroll.y}
+      if (rel[0]!=$(document.body)[0]){
+        var center_pos = {left:left, top:top}
+      }else{
+        var center_pos = {left:(winsize.x-parseInt(size.width))/2+winscroll.x, top:(winsize.y-parseInt(size.height))/2+winscroll.y}
+      }
       //var center_pos = {left:(winsize.x-winscroll.y-size.width)/2, top:(winsize.y-winscroll.y-size.height)/2}
       //if (animate == false){
         this.css(center_pos)
