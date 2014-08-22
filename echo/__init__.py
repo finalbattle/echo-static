@@ -17,6 +17,8 @@ if platform.uname()[1] == "mbtest2":
 if platform.uname()[1] == "zhangpeng-ThinkPad-T430":
     settings_path = join(base_path, 'settings.yaml')
 Yaml_Config(base_path, settings_path)
+#from code import interact
+#interact(local=locals())
 
 
 import os
