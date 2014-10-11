@@ -7,7 +7,6 @@ from torweb.handlers import BaseHandler
 from echo.shortcuts import *
 from torweb.paginator import Paginator, InvalidPage
 from tornado.web import HTTPError
-from echo.utils.redisdb import RedisPool
 from code import interact
 
 class Handler(BaseHandler):

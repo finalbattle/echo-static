@@ -12,6 +12,7 @@ from code import interact
 #########################################################
 # 静态文件处理
 #########################################################
+@url(r'/pygal.js/(.*)', **{'path':'/home/zhangpeng/projects/echo-static/echo/pygal.js/'})
 @url(r'/static/(.*)', **{'path': static_path})
 class Static(StaticFileHandler, Handler):
     def prepare(self):

@@ -116,3 +116,42 @@ def get_async_api_data(params,api_version='1', gateway_url=GATEWAY_URL, secret_k
         callback({"return_code":-1, "return_message":traceback.format_exc().split("\n")[-2]})
         #callback({"return_code":-1, "return_message":e.__unicode__()})
 
+##############################################################
+# 通过商户的callback url调用对应商户的支付信息（异步） 
+##############################################################
+@gen.engine
+def get_async_callback_data(url, params,api_version='1', callback=None):
+    try:
+        from echo.shortcuts import logger, logThrown
+        postdata = urllib.urlencode(params)
+        http_client = AsyncHTTPClient()
+        req_start = time.time()
+        response = yield gen.Task(http_client.fetch, url+"?"+postdata, headers={"Connection": "Keep-alive"})
+        req_end = time.time()
+        logger.info("CALLBACK_REQ_TIME: START:[%s]_____END:[%s]_____USE:[%s]" % (req_start, req_end, req_end - req_start))
+        logger.info("CALLBACK_REQ_DATA: %s" % params)
+        logger.info("CALLBACK_RESPONSE: %s" % response)
+        callback(simplejson.loads(response.body, use_decimal=True))
+    except:
+        logThrown()
+        callback({"return_code":-1, "return_message":"回调失败"})
+
+def get_callback_data(url, params,api_version='1'):
+    try:
+        from echo.shortcuts import logger, logThrown
+        postdata = urllib.urlencode(params)
+        req = urllib2.Request(url=url, data=postdata)
+        logger.info("*****CALLBACK_REQ_ALL: %s" % str(url + "?" + postdata))
+        req_start = time.time()
+        response = urllib2.urlopen(req).read()
+        logger.info("*****callback response: %s" % response)
+        response = response.decode('utf-8')
+        req_end = time.time()
+        logger.info("CALLBACK_REQ_TIME: START:[%s]_____END:[%s]_____USE:[%s]" % (req_start, req_end, req_end - req_start))
+        logger.info("CALLBACK_REQ_DATA: %s" % params)
+        logger.info("CALLBACK_RESPONSE: %s" % response)
+        return simplejson.loads(response, use_decimal=True)
+    except:
+        logThrown()
+        return simplejson.loads({"logThrown":"true"})
+

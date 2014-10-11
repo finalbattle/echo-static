@@ -1,38 +1,37 @@
 app: echo
 language: python
 
+url_root: "/"
 static_dir: static
 static_url: /static/
 static_domain: /static
 #static_domain: http://static.echo.com
 
-schemes:
-  - scheme: mysql
-    user: gateway
-    pass: gateway
-    host: 192.168.0.36
-    port: 3306
-    db: gateway
-    storm: store
-    sqlalchemy: session
-  - scheme: mysql
-    alias: pay
-    user: pay
-    pass: pay
-    host: 192.168.0.36
-    port: 3306
-    db: pay
-    sqlalchemy: paysession
-  - scheme: mysql
-    alias: wallet
-    user: wallet
-    pass: wallet
-    host: 192.168.0.36
-    port: 3306
-    db: wallet
-    sqlalchemy: wtsession
-
-memcached: ['127.0.0.1:11211']
+#schemes:
+#  - scheme: mysql
+#    user: gateway
+#    pass: gateway
+#    host: 192.168.0.35
+#    port: 3306
+#    db: gateway
+#    storm: store
+#    sqlalchemy: session
+#  - scheme: mysql
+#    alias: pay
+#    user: pay
+#    pass: pay
+#    host: 192.168.0.35
+#    port: 3306
+#    db: pay
+#    sqlalchemy: paysession
+#  - scheme: mysql
+#    alias: wallet
+#    user: wallet
+#    pass: wallet
+#    host: 192.168.0.36
+#    port: 3306
+#    db: wallet
+#    sqlalchemy: wtsession
 
 ############################################
 # SessionStore
@@ -49,3 +48,8 @@ redis:
   password: test
   timeout: 5
   expire: 86400
+
+log:
+  path: /usr/api-root/logs/echo-static
+env:
+  svg_path: http://192.168.1.108:8186/pygal.js/javascripts/

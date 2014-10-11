@@ -10,6 +10,33 @@ from torweb.handlers import *
 from code import interact
 
 from echo import *
+from payutils.configure import CONFIG as CONFIGURATION
+CONFIG = CONFIGURATION(settings.yaml_path)
+
+URL_ROOT = CONFIG("URL_ROOT")
+
+import os
+import logging
+import traceback
+from logging.handlers import TimedRotatingFileHandler
+def __init_log(_dir, type):
+    #_log_path = join(base_path, 'static', 'log', _dir, type)
+    _log_path = join(CONFIG("LOG.PATH"), _dir, type)
+    if not os.path.exists(_log_path): os.makedirs(_log_path)
+    _log = TimedRotatingFileHandler(join(_log_path, '%s.log' % type), 'MIDNIGHT')
+    _log.setFormatter(logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s'))
+    _log.setLevel(logging.NOTSET)
+    _logger = logging.getLogger(type)
+    _logger.addHandler(_log)
+    return _logger
+
+logger = __init_log("echo-static", "log")
+
+
+def logThrown():
+    logger.critical(traceback.format_exc())
+    logger.critical('-'*60)
+
 ###################################################
 # tornado 
 ###################################################
@@ -19,7 +46,6 @@ from tornado import gen
 from utils.api import *
 from utils.globals import *
 
-from echo.utils.redisdb import RedisPool
 
 from echo.error.exceptions import *
 
