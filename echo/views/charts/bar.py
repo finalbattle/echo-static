@@ -10,7 +10,7 @@ from echo.views.charts import *
 class XMLRPCBarChart(XMLRPCHandler):
     def getBar(self):
         from pygal import Bar
-        path = os.path.join(base_path, 'pygal.js', 'javascripts', 'bar', 'bar_chart.svg')
+        path = os.path.join(base_path, 'pygal_js', 'javascripts', 'bar', 'bar_chart.svg')
         config.width = 500
         config.height = 400
         bar_chart = Bar(config, width=400, height=300, legend_box_size=10)
@@ -57,7 +57,7 @@ class HttpBarChart(Handler):
         return self.get()
     def get(self):
         from pygal import Bar
-        path = os.path.join(base_path, 'pygal.js', 'javascripts', 'bar', 'bar_chart.svg')
+        path = os.path.join(base_path, 'pygal_js', 'javascripts', 'bar', 'bar_chart.svg')
         config.width = 500
         config.height = 400
         #bar_chart = Bar(config, width=400, height=300, legend_box_size=10)

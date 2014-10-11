@@ -52,4 +52,4 @@ redis:
 log:
   path: /usr/api-root/logs/echo-static
 env:
-  svg_path: http://192.168.1.108:8186/pygal.js/javascripts/
+  svg_path: http://192.168.1.108:8186/pygal_js/javascripts/
