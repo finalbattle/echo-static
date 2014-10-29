@@ -22,7 +22,7 @@ class Handler(BaseHandler):
         self.request.static_domain = echo.static_domain
     def render(self, template, **kwargs):
         tmpl = env.get_template(template)
-        kwargs.update({"request":self.request, "handler":self})
+        kwargs.update({"request":self.request, "handler":self, "CONFIG":CONFIG})
         self.write(tmpl.render(**kwargs))
     def render_to_string(self, template, **kwargs):
         tmpl = env.get_template(template)

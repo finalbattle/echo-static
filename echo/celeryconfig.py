@@ -8,7 +8,7 @@ BROKER_URL = "amqp://guest@localhost//"
 CELERY_RESULT_BACKEND = "amqp"
 #BROKER_TRANSPORT_OPTIONS = {"visibility_timeout": 18000}
 
-CELERY_EVENT_SERIALIZER = 'pickle' 
+CELERY_EVENT_SERIALIZER = 'pickle'
 
 CELERY_ACCEPT_CONTENT = ['json', 'pickle']  # ['pickle', 'json', 'msgpack', 'yaml']
 

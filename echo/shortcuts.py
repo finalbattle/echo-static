@@ -10,7 +10,7 @@ from torweb.handlers import *
 from code import interact
 
 from echo import *
-from payutils.configure import CONFIG as CONFIGURATION
+from torweb.configure import CONFIG as CONFIGURATION
 CONFIG = CONFIGURATION(settings.yaml_path)
 
 URL_ROOT = CONFIG("URL_ROOT")
