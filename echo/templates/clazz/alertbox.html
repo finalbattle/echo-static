@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}警告提示框{% endblock %}
+{% block main_content %}
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1>警告提示框</h1>
+  </div>
+  <p>通过一行简单的js代码，即可实现警告弹出框效果。</p>
+  <h2>参数</h2>
+  <div class="bs-example">
+    <pre>
+{
+  id:$generateId(),
+  title:"Title",
+  message:"",
+  html:"",
+  moveSpeed:null,
+  backdrop:"static",
+  buttons:[],
+  footer:"show",
+  closeBtn:"show",
+  shadow:"show",
+  appendTo:null
+}</pre>
+  </div>
+  <h2>代码</h2>
+  <div class="ps-example">
+    <pre>
+$AlertBox({
+  id:"alertbox", 
+  appendTo:$("div.bs-docs-section"), 
+  html:"Hello Word", 
+  buttons:[{text:"确定", action:function(){
+      $("#alertbox").tClose();
+    }}]
+}).show()</pre>
+  </div>
+  <h2>效果展示</h2>
+  <button type="button" id="button" class="btn btn-primary">警告提示框</button>
+  <div id="alertbox-example"></div>
+  <h2>关闭弹出框</h2>
+  <div class="bs-example">
+    <pre>$("#alertbox").tClose()</pre>
+  </div>
+</div>
+<script type="text/javascript" >
+$(function(){
+  $("#button").bind("click", function(){
+    $AlertBox({id:"alertbox", appendTo:$("#alertbox-example"), html:"Hello Word", buttons:[{text:"确定", action:function(){
+  $("#alertbox").tClose();
+}}]}).show()
+  })
+})
+</script>
+{% endblock %}

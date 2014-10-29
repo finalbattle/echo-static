@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}按钮效果{% endblock %}
+{% block main_content %}
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1>按钮</h1>
+  </div>
+  <p>针对input、button、a标签类的按钮，都可以实现loading效果。</p>
+  <h2>HTML</h2>
+  <div class="bs-example">
+    <pre>
+&lt;button type="button" id="button" class="btn btn-primary"&gt;确定&lt;/button&gt;</pre>
+  </div>
+  <h2>加载状态(Loading)</h2>
+  <div class="bs-example">
+    <pre>$("#button").tLoading("Loading...")</pre>
+  </div>
+  <h2>状态重置(Reset)</h2>
+  <div class="bs-example">
+    <pre>$("#button").tReset("确定")</pre>
+  </div>
+  <h4>效果展示</h4>
+  <button type="button" id="button" class="btn btn-primary">确定</button>
+
+  <h2>完成状态(Complete)</h2>
+  <div class="bs-example">
+    <pre>$("#button").tComplete("加载完成")</pre>
+  </div>
+  <h4>效果展示</h4>
+  <button type="button" id="button2" class="btn btn-primary">确定</button>
+
+</div>
+<script type="text/javascript" >
+$(function(){
+  $("#button").bind("click", function(){
+    $("#button").tLoading("Loading...");
+    setTimeout(resetButton, 1000)
+  })
+  $("#button2").bind("click", function(){
+    $("#button2").tComplete("加载完成");
+  })
+})
+function resetButton(){
+  $("#button").tReset()
+}
+</script>
+{% endblock %}

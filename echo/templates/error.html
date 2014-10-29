@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="{{ request.static_domain }}/css/error.css?{{ _random }}" type="text/css" media="screen" />
+</head>
+
+<body>
+<div class="w">
+	<div class="error">
+		<h2>{{ status_code }}</h2>
+        <div class="error_child">{{ kwargs.exception }}</div>
+	</div>
+	</div>
+</body>
+</html>
+{#
+{% extends "base.html" %}
+{% block layout_css %}
+<link rel="stylesheet" href="/static/bootstrap/css/layout/bootstrap.css">
+<link rel="stylesheet" href="/static/bootstrap/css/error.css">
+{% endblock %}
+{% block layout_body %}
+    <div class="container">
+
+      <form class="form-signin" role="form" action="/do_login" method="POST">
+        <h2 class="form-signin-heading">{{ status_code}}</h2>
+        <div class="error_child">{{ kwargs.exception }}</div>
+      </form>
+
+    </div> <!-- /container -->
+{% endblock %}
+#}

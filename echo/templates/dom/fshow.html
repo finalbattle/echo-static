@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block title %}拖动效果{% endblock %}
+{% block main_content %}
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1>弹出框</h1>
+  </div>
+  <p>对于任意自定义的html代码，均可以做弹出框操作。</p>
+  <h2>HTML</h2>
+  <div class="bs-example">
+    <pre>
+&lt;div id="popup" class="panel panel-primary" style="display:none;width:400px"&gt;
+  &lt;div class="panel-heading"&gt;
+    &lt;h3 class="panel-title"&gt;Panel title&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class="panel-body"&gt;
+    Panel content
+  &lt;/div&gt;
+  &lt;div class="panel-footer text-center"&gt;
+    &lt;button type="button" class="btn btn-primary" onclick="$('#popup').tHide()"&gt;关闭&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+  <h2>效果展示</h2>
+  <button type="button" id="button" class="btn btn-primary">弹出框</button>
+    <div id="popup" class="panel panel-primary" style="display:none;width:400px">
+      <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+      <div class="panel-footer text-center">
+        <button type="button" id="button" class="btn btn-primary" onclick="$('#popup').tHide()">关闭</button>
+      </div>
+    </div>
+    <h2>参数</h2>
+  <div class="bs-example">
+    <pre>
+{
+    drag_handle: "",
+    modal: false,
+    draggableClass: "draggable",
+    activeHandleClass: "active-handle"
+}</pre>
+  </div>
+  <h2>代码</h2>
+  <div class="bs-example">
+    <pre>$("#popup").fshow({drag_handle:$(".panel-heading"), modal:true, animate:true})</pre>
+  </div>
+  <h2>关闭弹出框</h2>
+  <div class="bs-example">
+    <pre>$("#popup").tHide()</pre>
+  </div>
+</div>
+<script type="text/javascript" >
+$(function(){
+  $("#button").bind("click", function(){
+    $("#popup").fshow({drag_handle:$("#popup").find(".panel-heading"), modal:true, animate:true})
+  })
+})
+</script>
+{% endblock %}

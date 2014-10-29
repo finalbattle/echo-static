@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block layout_css %}
+<link rel="stylesheet" href="/static/bootstrap/css/layout/bootstrap.css">
+<link rel="stylesheet" href="/static/bootstrap/css/signin.css">
+{% endblock %}
+{% block layout_body %}
+    <div class="container" id="container">
+      {% if valid_data.return_code == 0 %}
+      <form class="form-signin" role="form" action="/do_login" method="POST">
+        <h2 class="form-signin-heading">您已登录{{ app_name }}</h2>
+        <input type="hidden" id="next" value="{{ handler.args.get('next', '')}}">
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="do_logout()">注 销</button>
+      </form>
+      {% else %}
+<ul class="nav nav-tabs" id="login_id">
+<li class="active"><a href="#login-phone" evalue="login-phone" data-toggle="tab" onclick="$(this).blur();$('#login_type').val('001');$('#username').attr('placeholder', '手机号').val('');">手机登录</a></li>
+  <li><a href="#login-email" evalue="login-email" data-toggle="tab" onclick="$(this).blur();$('#login_type').val('002');$('#username').attr('placeholder', '邮箱').val('');">邮箱登录</a></li>
+  <li><a href="#login-orderid" evalue="login-orderid" data-toggle="tab" onclick="$(this).blur();$('#login_type').val('004');$('#username').attr('placeholder', '证件号码').val('');">证件登录</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="login-phone">
+    <div class="panel">
+      <div class="panel-body">
+        <p>
+          <form class="form-signin" role="form" action="/do_login" method="POST">
+            <h2 class="form-signin-heading">请登录{{ app_name }}</h2>
+            <input type="hidden" id="next" value="{{ handler.args.get('next', '')}}">
+            <input type="hidden" id="login_type" value="001">
+            <input type="text" class="form-control" id="username" placeholder="手机号" required autofocus>
+            <input type="password" class="form-control" id="password" placeholder="密码" required>
+            <label class="checkbox">
+              <input type="checkbox" id="rem_me" name="rem_me"> Remember me
+            </label>
+            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="do_login()">登 录</button>
+            <a href="/reg?{{ request.query }}" style="color:red" >立即注册</a>
+          </form>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+      {% endif %}
+
+    </div> <!-- /container -->
+    <script type="text/javascript" charset="utf-8">
+    $(function(){
+        $.ajax({
+            url:"http://127.0.0.1:8000/jsonp/login-state",
+            dataType:"jsonp",
+            data:"jsoncallback={0}&domain={1}".format("loginstate","www.paycenter.com:8888"),
+            headers:{ "X-Requested-With":"XMLHttpRequest" },
+            beforeSend: function(xhr, settings) { 
+              xhr.setRequestHeader('X-Requested-With','XMLHttpRequest'); 
+            },
+            success: function(response){
+              console.log(response)
+            }
+      })
+    })
+    </script>
+
+    <script type="text/javascript">
+    /**
+     * init login
+     */
+    $(function(){
+      var rem_me = $cookie("rem_me")? 1:0;
+      if(rem_me == 1){
+        $("#username").val($cookie("uid"))
+        $("#rem_me").attr("checked", true);
+        $("#password").focus();
+      }
+    });
+
+    /**
+     * do login
+     */
+    function do_login(){
+      var username = $("#username").val();
+      if (username == null || username == ""){
+        $MsgBox({id:"login_box", message:"用户名不能为空", appendTo:$('div.container'), buttons:[
+              {text:"确定", action:function(){
+                  $("#login_box").tClose();
+                  $("#username").focus();
+              }}
+          ]}).show();
+        return false;
+      }
+      var password = $("#password").val();
+      if (password == null || password == ""){
+        $MsgBox({id:"login_box", message:"密码不能为空", appendTo:$('div.container'), buttons:[
+              {text:"确定", action:function(){
+                  $("#login_box").tClose();
+                  $("#password").focus();
+              }}
+          ]}).show();
+        $("#password").focus()
+        return false;
+      }
+      var password = SHA1(password);
+
+      var rem_me = $("#rem_me").prop("checked") == true ? 1:0;
+      var login_type = $("#login_type").val();
+      var next = $("#next").val();
+      $.ajax({
+        url:"/do_login",
+        type: "post",
+        dataType: "json",
+        data: "username={0}&password={1}&rem_me={2}&next={3}&login_type={4}".format(username, password, rem_me, next, login_type),
+        success: function(response){
+          if (response.result.return_code == 0){
+            next = response.result.next;
+            window.location.href = next;
+          }else{
+            $MsgBox({message:response.result.return_message, appendTo:$('div.container')}).show();
+          }
+        },
+        error: function(){
+          $MsgBox({message:"error", appendTo:$('div.container')}).show();
+        }
+      })
+    }
+    </script>
+    {% include "includes/logout.html" %}
+{% endblock %}

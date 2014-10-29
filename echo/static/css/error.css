@@ -1,0 +1,4 @@
+.w{width:300px; margin:0 auto;}
+.error{width:250px;background:url(../images/error.jpg) no-repeat;padding:0 0 15px 120px;overflow:hidden; margin-top:210px}
+.error h2{font-size:50px;margin-bottom:5px;color:#9d9d9d;font-family:\5fae\8f6f\96c5\9ed1;font-weight:normal; margin-top:0}
+.error .error_child{color:#9c9c9c; font-size:16px;font-family:\5fae\8f6f\96c5\9ed1;}

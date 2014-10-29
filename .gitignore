@@ -1,5 +1,9 @@
 *.pyc
+<<<<<<< HEAD
+*.*~
+=======
 .hg/
 .hgignore
 dist/
 torweb.egg-info/
+>>>>>>> f4bf2276ce1b5b5e1fca41c88d6fb1c9fb239f7f

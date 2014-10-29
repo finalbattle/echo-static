@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}判断浏览器{% endblock %}
+{% block main_content %}
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1>判断浏览器</h1>
+  </div>
+  <h2>$isBrowser</h2>
+  <p>检查当前浏览器类型</p>
+  <h2>代码</h2>
+  <div class="bs-example">
+    <pre>$isBrowser()</pre>
+  </div>
+  <h2>返回结果</h2>
+  <div class="bs-example">
+    <pre>
+"IE"
+"FIREFOX"
+"CHROME"
+"OPERA"
+"SAFARI"</pre>
+  </div>
+  <h4>运行效果</h4>
+  <p><button type="button" id="button" class="btn btn-primary">运行</button></p>
+</div>
+<script type="text/javascript" >
+$(function(){
+  $("#button").bind("click", function(){
+    $ToolBox({"title":"isBrowser", message:$isBrowser()}).show();
+  })
+})
+</script>
+{% endblock %}

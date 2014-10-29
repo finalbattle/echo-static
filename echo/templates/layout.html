@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block layout_css %}
+<link rel="stylesheet" href="/static/bootstrap/css/layout/bootstrap.css">
+<link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/static/bootstrap/css/layout/sticky-footer-navbar.css">
+<!--script src="/static/bootstrap/js/jquery-1.10.2.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/bootstrap/js/echo-strap-0.0.1.js"></script-->
+{% endblock %}
+{% block css %}{% endblock %}
+{% block layout_body %}
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+      <!-- Fixed navbar -->
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      {% include "navbar.html" %}
+      </div>
+      <!-- Begin page content -->
+      <div id="container" class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <!-- 折叠窗口 - Begin -->
+            {% include "sidebar.html" %}
+            <!-- 折叠窗口 - End -->
+          </div>
+          <div class="col-md-9">
+              {% block main_content %}
+              <div class="page-header">
+                <h1>Sticky footer with fixed navbar</h1>
+              </div>
+              <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
+              <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
+              {% endblock %}
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+      <p class="text-muted credit">Developed by @<a href="javascript:;">zhangpeng</a>. Based on JQuery and Bootstrap.</p>
+      </div>
+    </div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript">
+$(document).ready(function(){
+    var nav_active = '{{ action }}';
+    $(".navbar-nav li").removeClass("active");
+    $(".navbar-nav li[nid="+nav_active+"]").addClass("active")
+    $(".navbar-nav li[nid="+nav_active+"]").parents("li[class=dropdown]").addClass("active");
+    $(".col-md-3 .nav-pills li").removeClass("active");
+    $(".col-md-3 .nav-pills li[nid="+nav_active+"]").addClass("active");
+    $("div.panel-collapse").removeClass("in");
+    $("li[nid="+nav_active+"]").parent().parent().parent().parent().find(".collapse").addClass("in");
+    //$('.panel-collapse').on('shown.bs.collapse', function () {
+    //  console.log($(this).find("div").html())
+    //  $("li[nid="+nav_active+"]").parent().parent().parent().parent().find(".collapse").collapse("show");
+    //  //$('.collapse').collapse('hide')
+    //  //$(this).find(".collapse").collapse("show");
+    //})
+})
+</script>
+{% include "includes/logout.html" %}
+{% endblock %}
+

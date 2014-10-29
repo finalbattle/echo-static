@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+{% block title %}参数筛选框{% endblock %}
+{% block main_content %}
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1>参数筛选框</h1>
+  </div>
+  <p>通过初始化一段HTML代码，即可实现参数筛选效果。</p>
+  <h2>效果展示</h2>
+  <p>
+    <div class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="types" class="col-sm-2 control-label">分类1</label>
+        <div class="nav nav-pills paramsbox" id="types1">
+          <li class="active"><a href="javascript:;" evalue="-1">Default</a></li>
+          <li><a href="javascript:;" evalue="home">Home</a></li>
+          <li><a href="javascript:;" evalue="profile">Profile</a></li>
+          <li><a href="javascript:;" evalue="messages">Messages</a></li>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="types" class="col-sm-2 control-label">分类2</label>
+        <div class="nav nav-pills paramsbox" id="types2" eparent="types1">
+          <li class="active"><a href="javascript:;" evalue="-1">Default</a></li>
+          {% for tp in types2 %}
+          <li><a href="javascript:;" evalue="{{ tp }}">{{ tp }}</a></li>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="keyword" class="col-sm-2 control-label">关键字</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control paramsbox" id="keyword" placeholder="Keyword">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-5">
+          <button type="button" id="submitButton" class="btn btn-primary">筛选</button>
+        </div>
+      </div>
+      <div class="form-group">
+        你选择了 
+        {% set _types1 = handler.args.get("types1", "-1") %}
+        {% set _types2 = handler.args.get("types2", "-1") %}
+        {% set _keyword = handler.args.get("keyword", "") %}
+        {% if _types1 != "-1" %}<button type="button" class="btn btn-success" >{{ _types1 }}<button type="button" class="close">&times;</button></button>{% endif %}
+        {% if _types2 != "-1" %}<input type="button" class="btn btn-success" value="{{ _types2 }}"/>{% endif %}
+        {% if _keyword != "" %}<input type="button" class="btn btn-success" value="{{ _keyword }}"/>{% endif %}
+      </div>
+    </div>
+
+  </p>
+  <h2>参数</h2>
+  <div class="bs-example">
+    <pre>
+{
+  controls:null,
+  submitButtons:[],
+  extraParams:null,
+  autoFire:true,
+}</pre>
+  </div>
+  <h2>HTML</h2>
+  <div class="ps-example">
+    <pre>
+&lt;div class="form-horizontal" role="form"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="types" class="col-sm-2 control-label"&gt;分类1&lt;/label&gt;
+    &lt;div class="nav nav-pills paramsbox" id="types1"&gt;
+      &lt;li class="active"&gt;&lt;a href="javascript:;" evalue="-1"&gt;Default&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="javascript:;" evalue="home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="javascript:;" evalue="profile"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="javascript:;" evalue="messages"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="types" class="col-sm-2 control-label"&gt;分类2&lt;/label&gt;
+    &lt;div class="nav nav-pills paramsbox" id="types2" eparent="types"&gt;
+      &lt;li class="active"&gt;&lt;a href="javascript:;" evalue="-1"&gt;Default&lt;/a&gt;&lt;/li&gt;{% for tp in types2 %}
+      &lt;li&gt;&lt;a href="javascript:;" evalue="{{ tp }}"&gt;{{ tp }}&lt;/a&gt;&lt;/li&gt;{% endfor %}
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="keyword" class="col-sm-2 control-label"&gt;关键字&lt;/label&gt;
+    &lt;div class="col-sm-5"&gt;
+      &lt;input type="text" class="form-control paramsbox" id="keyword" placeholder="Keyword"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;div class="col-sm-offset-2 col-sm-5"&gt;
+      &lt;button type="button" id="submitButton" class="btn btn-primary"&gt;筛选&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+  <h2>代码</h2>
+  <div class="ps-example">
+    <pre>
+$ParamsBox({controls:$(".paramsbox"), submitButtons:[$("#keyword"), $("#submitButton")]})
+</pre>
+  </div>
+
+</div>
+<script type="text/javascript" >
+$(function(){
+    $ParamsBox({controls:$(".paramsbox"), submitButtons:[$("#keyword"), $("#submitButton")]})
+})
+</script>
+{% endblock %}
