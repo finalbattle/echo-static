@@ -19,6 +19,7 @@ class Basic(Handler):
 @url("/dom/buttons", action="buttons")
 class Dom(Handler):
     def get(self):
+        logger.info("haha")
         return self.render("dom/%s.html" % self.kwargs["action"], action=self.kwargs["action"])
 
 @url("/function/isbrowser", action="isbrowser")

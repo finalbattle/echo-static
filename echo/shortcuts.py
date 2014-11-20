@@ -30,8 +30,24 @@ def __init_log(_dir, type):
     _logger.addHandler(_log)
     return _logger
 
-logger = __init_log("echo-static", "log")
+#logger = __init_log("echo-static", "log")
 
+from logging import config as logConfig
+import yaml
+logConfig.dictConfig(yaml.load(open(settings.yaml_path, 'r')))
+itornado = logging.getLogger("tor")
+logger = logging.getLogger("con")
+iError= logging.getLogger("iEr")
+
+logging.info("1")
+itornado.info("2")
+iError.error("3")
+
+logger.info("4")
+logging.info("5")
+logging.warning("6")
+logging.debug("7")
+logging.critical("8")
 
 def logThrown():
     logger.critical(traceback.format_exc())

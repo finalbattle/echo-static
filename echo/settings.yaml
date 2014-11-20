@@ -49,6 +49,54 @@ redis:
   timeout: 5
   expire: 86400
 
+############################################
+# LOGGER
+############################################
+version: 1
+formatters:
+  simpleFormater:
+    #format: '%(asctime)s - %(levelname)s: %(message)s'
+    format: '[%(name)s %(levelname)1.1s %(asctime)s %(module)s:%(lineno)d] %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+  consoleFormatter:
+    (): 'echo.logkit.ColoredConsoleFormatter'
+    format: '[%(levelname)1.1s %(asctime)s %(module)s:%(lineno)d] %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: consoleFormatter
+    level: NOTSET
+    stream: ext://sys.stdout
+  file:
+    class : echo.logkit.iTimedRotatingFileHandler
+    formatter: simpleFormater
+    level: INFO
+    filename: /usr/api-root/logs/echo-static/echo-static/log/info.log
+    when: D
+  iError:
+    class : echo.logkit.iTimedRotatingFileHandler
+    formatter: simpleFormater
+    level: INFO
+    filename: /usr/api-root/logs/echo-static/echo-static/log/error.log
+    when: D
+
+loggers:
+  logger:
+    level: DEBUG
+    handlers: [console]
+  tornado:
+    level: NOTSET
+    handlers: [file]
+  iError:
+    level: NOTSET
+    handlers: [iError]
+
+root:
+  level: INFO
+  handlers: [console, file, iError]
+
 log:
   path: /usr/api-root/logs/echo-static
 env:
