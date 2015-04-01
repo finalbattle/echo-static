@@ -10,7 +10,7 @@ from torweb.handlers import *
 from code import interact
 
 from echo import *
-from torweb.configure import CONFIG as CONFIGURATION
+from torweb.config import CONFIG as CONFIGURATION
 CONFIG = CONFIGURATION(settings.yaml_path)
 
 URL_ROOT = CONFIG("URL_ROOT")
@@ -30,15 +30,36 @@ def __init_log(_dir, type):
     _logger.addHandler(_log)
     return _logger
 
-#logger = __init_log("echo-static", "log")
+#loggerLog = __init_log("echo-static", "log")
 
-from logging import config as logConfig
+import sys
+def func_info():
+    """Return the frame object for the caller's stack frame."""
+    try:
+        raise Exception
+    except:
+        f = sys.exc_info()[2].tb_frame.f_back
+    return "%s:%s" %(f.f_code.co_name, f.f_lineno)
+
+func_module = lambda: sys._getframe().f_back.f_code.co_name
+func_lineno = lambda: sys._getframe().f_back.f_lineno
+
+from logging.config import dictConfig
 import yaml
-logConfig.dictConfig(yaml.load(open(settings.yaml_path, 'r')))
-itornado = logging.getLogger("tor")
-logger = logging.getLogger("con")
-iError= logging.getLogger("iEr")
+dictConfig(yaml.load(open(settings.yaml_path, 'r')))
+itornado = logging.getLogger("console")
+logger = logging.getLogger("file")
+iError= logging.getLogger("iError")
 
+logger.info("")
+debug_format = "[%(name)s %(fn)s:%(lineno)s] %(message)s"
+logger.info(debug_format % {"lineno": func_lineno(),
+    "name": __name__,
+    "fn": func_module(),
+    "message": "settings_path:%s" % settings.yaml_path
+})
+
+#loggerLog.info("0")
 logging.info("1")
 itornado.info("2")
 iError.error("3")
@@ -48,6 +69,7 @@ logging.info("5")
 logging.warning("6")
 logging.debug("7")
 logging.critical("8")
+
 
 def logThrown():
     logger.critical(traceback.format_exc())

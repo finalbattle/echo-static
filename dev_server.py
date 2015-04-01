@@ -31,10 +31,10 @@ if __name__ == '__main__':
                        metavar="PORT")
     (option, args) = options.parse_args()
     tornado.options.parse_command_line(args)
-    logging.info(option.settings)
+    #logging.info(option.settings)
     from echo import celeryapp
     tcelery.setup_nonblocking_producer(celery_app=celeryapp.celery)
-    from torweb.configure import CONFIG as CONFIGURATION
+    from torweb.config import CONFIG as CONFIGURATION
     CONFIG = CONFIGURATION(option.settings)
     URL_ROOT = CONFIG("URL_ROOT")
     app = make_application(echo, debug, wsgi=False, settings_path=option.settings, url_root=URL_ROOT, cookie_secret="abcde")

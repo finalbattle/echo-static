@@ -4,7 +4,7 @@
 import os
 from torweb.handlers import StaticFileHandler
 from tornado.web import RequestHandler, HTTPError
-from torweb.urls import url, except_url
+from torweb.urls import url, except_url, url404
 from echo import *
 from echo.handlers import Handler
 from code import interact
@@ -25,7 +25,7 @@ class Static(StaticFileHandler, Handler):
 #########################################################
 # 404页面处理
 #########################################################
-@except_url(r'.*')
+@url404(r'.*')
 class Handler404(Handler):
     def prepare(self):
         super(Handler404, self).prepare()
